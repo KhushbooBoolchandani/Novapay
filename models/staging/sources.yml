@@ -39,4 +39,4 @@ sources:
     freshness:
       warn_after: {count: 24, period: hour}
     tables:
-      - name: country_codes
+      - name: country_codes  
