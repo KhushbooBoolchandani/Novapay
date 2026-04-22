@@ -1,14 +1,26 @@
-with source as (
-    select * from {{ source('vendor_sources', 'credit_scores') }}
+with credit_src as (
+
+    select 
+        *
+    from {{ source('vendor_sources', 'credit_scores') }}
+
 ),
-renamed as (
+
+credit_transformed as (
     select
-        {{ dbt_utils.generate_surrogate_key(['customer_id', 'score_date']) }} as credit_score_sk,
-        customer_id,
-        cast(score_date as date) as score_date,
-        cast(credit_score as integer) as credit_score,
-        risk_category,
-        _LOADED_AT as loaded_at
-    from source
+        {{ dbt_utils.generate_surrogate_key([
+            'credit_src.customer_id',
+            'credit_src.score_date'
+        ]) }} as credit_score_sk,
+        credit_src.customer_id                                as customer_id,
+        credit_src.score_date::date                           as score_date,
+        credit_src.credit_score::int                          as credit_score,
+        credit_src.risk_category                              as risk_category,
+        credit_src._LOADED_AT                                 as loaded_at
+    from credit_src
+
 )
-select * from renamed
+
+select 
+    *
+from credit_transformed
