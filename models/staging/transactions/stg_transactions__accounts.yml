@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: stg_transactions__accounts
+    columns:
+      - name: account_sk
+        tests:
+          - not_null
+          - unique

@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: stg_crm__customer_interactions
+    columns:
+      - name: interaction_sk
+        tests:
+          - not_null
+          - unique
