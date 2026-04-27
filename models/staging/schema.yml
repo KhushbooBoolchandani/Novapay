@@ -1,0 +1,76 @@
+version: 2
+
+models:
+
+  - name: stg_crm__customers
+    columns:
+      - name: customer_sk
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_crm__customer_interactions
+    columns:
+      - name: interaction_sk
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_transactions__accounts
+    columns:
+      - name: account_sk
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_transactions__merchants
+    columns:
+      - name: merchant_sk
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_transactions__payments
+    columns:
+
+      - name: payment_sk
+        tests:
+          - not_null
+          - unique
+
+      - name: customer_id
+        tests:
+          - relationships:
+              to: ref('stg_crm__customers')
+              field: customer_id
+
+      - name: account_id
+        tests:
+          - relationships:
+              to: ref('stg_transactions__accounts')
+              field: account_id
+
+      - name: merchant_id
+        tests:
+          - relationships:
+              to: ref('stg_transactions__merchants')
+              field: merchant_id
+
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['pending', 'completed', 'failed', 'reversed']
+
+  - name: stg_vendor__credit_scores
+    columns:
+      - name: credit_score_sk
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_vendor__product_catalog
+    columns:
+      - name: product_sk
+        tests:
+          - not_null
+          - unique
