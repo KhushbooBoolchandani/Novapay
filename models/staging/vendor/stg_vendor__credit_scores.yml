@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: stg_vendor__credit_scores
+    columns:
+      - name: credit_score_sk
+        tests:
+          - not_null
+          - unique
