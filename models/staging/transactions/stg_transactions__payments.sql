@@ -31,6 +31,7 @@ payments_clean as (
         payments_src.account_id,
         payments_src.merchant_id,
         payments_src.payment_amount::number(18,2) as payment_amount,
+        payments_src.fee_amount::number(18,2) as fee_amount,
         payments_src.payment_currency as currency_code,
         payments_src.payment_status   as status,
         payments_src.payment_date::date as payment_date,
