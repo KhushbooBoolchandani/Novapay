@@ -1,0 +1,51 @@
+
+name: 'NovaPay'
+version: '1.0.0'
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'NovaPay'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Configuring models
+models:
+  NovaPay:
+    # This applies to EVERYTHING in the models folder
+    +database: NOVAPAY_STAGING
+    
+    staging:
+      # This forces everything in the models/staging folder to be a Table
+      +materialized: table
+      
+      # Mapping sub-folders to Snowflake Schemas
+      crm:
+        +schema: CRM
+      transactions:
+        +schema: TRANSACTIONS
+      vendor:
+        +schema: VENDOR
+      reference:
+        +schema: REFERENCE
+
+    intermediate:
+      +schema: intermediate
+      
+    marts:
+      +database: NOVAPAY_DWH        
+      +schema: DIMENSIONAL          
+      +materialized: table  
+
+snapshots:
+  NovaPay:
+    +database: NOVAPAY_DWH
+    +schema: SNAPSHOTS
