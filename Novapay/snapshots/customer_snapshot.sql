@@ -5,7 +5,7 @@
         target_schema='SNAPSHOTS',
         unique_key='customer_id',
         strategy='check',
-        check_cols=['customer_tier', 'address', 'is_active_flag']
+        check_cols='all'
     )
 }}
 

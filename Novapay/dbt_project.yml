@@ -45,6 +45,11 @@ models:
       +schema: DIMENSIONAL          
       +materialized: table  
 
+    data_vault:
+      +database: NOVAPAY_DWH
+      +schema: DATA_VAULT
+      +materialized: table
+
 snapshots:
   NovaPay:
     +database: NOVAPAY_DWH
