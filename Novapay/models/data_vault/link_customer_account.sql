@@ -4,12 +4,15 @@
 ) }}
 
 {{ automate_dv.link(
-    src_pk='customer_account_hk',
+    src_pk='CUSTOMER_ACCOUNT_HK',
     src_fk=[
-        'customer_hk',
-        'account_hk'
+        'CUSTOMER_HK',
+        'ACCOUNT_HK'
     ],
-    src_ldts='loaded_at',
-    src_source='record_source',
-    source_model='stg_dv_accounts'
+    src_ldts='LOADED_AT',
+    src_source='RECORD_SOURCE',
+    source_model=[
+        'stg_dv_customers',
+        'stg_dv_accounts'
+    ]
 ) }}

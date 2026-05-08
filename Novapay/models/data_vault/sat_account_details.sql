@@ -5,7 +5,7 @@
 
 {{ automate_dv.sat(
     src_pk='account_hk',
-    src_hashdiff='account_hashdiff',
+    src_hashdiff='hashdiff',
     src_payload=[
         'account_type',
         'account_status',
@@ -17,3 +17,4 @@
     src_source='record_source',
     source_model='stg_dv_accounts'
 ) }}
+
