@@ -31,10 +31,9 @@ final as (
         payment_amount,
         fee_amount,
 
-        -- ✅ net amount calculation
         (payment_amount - fee_amount) as net_amount,
 
-        -- ✅ refund flag
+    
         case 
             when payment_amount < 0 then true
             else false

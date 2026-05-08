@@ -10,7 +10,6 @@ accounts_clean as (
 
     select
         {{ dbt_utils.generate_surrogate_key(['accounts_src.account_id']) }} as account_sk,
-
         accounts_src.account_id,
         accounts_src.customer_id,
         accounts_src.account_type,
