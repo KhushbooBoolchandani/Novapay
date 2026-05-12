@@ -1,1 +1,6 @@
-.env
+#files 
+venv_airflow/.env
+venv_airflow/config/
+venv_airflow/Lib/
+venv_airflow/logs/
+venv_airflow/Scripts/
