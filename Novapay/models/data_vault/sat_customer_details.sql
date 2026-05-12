@@ -4,20 +4,20 @@
 ) }}
 
 {{ automate_dv.sat(
-    src_pk='CUSTOMER_HK',
-    src_hashdiff='HASHDIFF',
+    src_pk='customer_hk',
+    src_hashdiff='hashdiff',
     src_payload=[
-        'FIRST_NAME',
-        'LAST_NAME',
-        'EMAIL',
-        'PHONE_NUMBER',
-        'BIRTH_DATE',
-        'JOINED_DATE',
-        'CITY',
-        'COUNTRY_CODE',
-        'IS_ACTIVE_FLAG'
+        'first_name',
+        'last_name',
+        'email',
+        'phone_number',
+        'birth_date',
+        'joined_date',
+        'city',
+        'country_code',
+        'is_active_flag'
     ],
-    src_ldts='LOADED_AT',
-    src_source='RECORD_SOURCE',
+    src_ldts='loaded_at',
+    src_source='record_source',
     source_model='stg_dv_customers'
 ) }}
